@@ -13,11 +13,11 @@ body {
 
 .container {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .title {
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #ff6961, #ffcc5c);
@@ -26,7 +26,7 @@ body {
 }
 
 .label {
-    font-size: 29px;
+    font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #9370db, #3cb371);
@@ -38,7 +38,7 @@ body {
     position: relative;
     width: 100%;
     max-width: 400px;
-    padding-top: 75%; /* 4:3 Aspect Ratio */
+    padding-top: 133.33%; /* 4:3 Aspect Ratio */
     background-color: #000;
     border-radius: 8px;
     overflow: hidden;
@@ -84,16 +84,4 @@ textarea {
     margin-top: 10px;
     box-sizing: border-box;
     resize: none;
-}
-
-.search-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #d2b48c, #deb887);
-    color: white;
-    cursor: pointer;
 }
