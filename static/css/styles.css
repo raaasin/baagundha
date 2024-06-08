@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -17,7 +17,7 @@ body {
 }
 
 .title {
-    font-size: 40px;
+    font-size: 140px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #ff6961, #ffcc5c);
