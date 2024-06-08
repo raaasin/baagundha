@@ -46,12 +46,8 @@ if img_file_buffer is not None:
         ["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc, only reply with rating and the reason in detailed format", picture],
         generation_config=genai.types.GenerationConfig(
             candidate_count=1,
-            stop_sequences=['x'],
             temperature=0
         )
     )
     response.resolve()
-
-    st.success("Image saved as image.png")
-    st.image(image, caption="Captured Image")
-    st.text(response.text)
+    st.text_area("Response", response.text)
