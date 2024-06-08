@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webcam Capture</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Webcam Capture</h1>
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="capture">Capture</button>
-    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-    <textarea id="response" rows="10" cols="50"></textarea>
+    <div class="container">
+        <h1>Webcam Capture</h1>
+        <div class="video-container">
+            <video id="video" width="640" height="480" autoplay></video>
+        </div>
+        <button id="capture" class="capture-button">Capture</button>
+        <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+        <textarea id="response" rows="10" cols="50" placeholder="Response will appear here..."></textarea>
+    </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
