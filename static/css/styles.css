@@ -17,6 +17,9 @@ body {
     padding: 20px;
     width: 80%;
     max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
@@ -29,11 +32,12 @@ h1 {
     border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #video {
-    display: block;
     width: 100%;
+    height: auto;
 }
 
 .capture-button {
@@ -61,4 +65,34 @@ textarea {
     padding: 10px;
     font-size: 14px;
     font-family: 'Roboto', Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .video-container {
+        width: 100%;
+        height: calc(100vh - 200px);
+    }
+
+    #video {
+        width: 100%;
+        height: 100%;
+    }
+
+    .capture-button {
+        width: 80%;
+        margin: 10px auto;
+    }
+
+    textarea {
+        width: 90%;
+        max-width: none;
+        height: 150px;
+    }
 }

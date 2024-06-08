@@ -11,10 +11,10 @@
     <div class="container">
         <h1>Webcam Capture</h1>
         <div class="video-container">
-            <video id="video" width="640" height="480" autoplay></video>
+            <video id="video" autoplay></video>
         </div>
         <button id="capture" class="capture-button">Capture</button>
-        <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+        <canvas id="canvas" style="display:none;"></canvas>
         <textarea id="response" rows="10" cols="50" placeholder="Response will appear here..."></textarea>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
