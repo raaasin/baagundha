@@ -43,7 +43,7 @@ if img_file_buffer is not None:
     }
 
     response = model.generate_content(
-        ["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc,reply like this: Rating out of 5, Reason, expiry if mentioned", picture],
+        ["Read all contents of the label, based on all contents rate it out of 5 for edible products based on health and for inedible products like groceries or makeup tell about safe usage etc,reply like this: Rating:, Reason:, expiry if mentioned:", picture],
         generation_config=genai.types.GenerationConfig(
             candidate_count=1,
             temperature=0
