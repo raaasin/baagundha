@@ -68,7 +68,7 @@ if img_file_buffer is not None:
     if st.button("Suggest alternative product"):
         with st.spinner("Identifying Product Name"):
             response = model.generate_content(
-                ["what is this? just tell the name nothing else", picture],
+                ["What is the general term for this product? only reply with single word", picture],
                 generation_config=genai.types.GenerationConfig(
                     candidate_count=1,
                     temperature=0,
@@ -81,7 +81,7 @@ if img_file_buffer is not None:
             result = alternative_product(product_name)
 
         with st.spinner("Almost done!"):
-            prompt = f"the best alternative product is {result} for {product_name} in India, reply like this Alternative:, Reason:, reply in json format"
+            prompt = f"healthiest product internet search is :{result} for {product_name} in India,find only one healthy product and  reply like this Alternative:, Reason:, reply in json format"
             response = model.generate_content(
                 [prompt],
                 generation_config=genai.types.GenerationConfig(
