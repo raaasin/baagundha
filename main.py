@@ -7,7 +7,28 @@ from dotenv import load_dotenv
 
 load_dotenv()
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
+
 st.title("Webcam Capture")
+
+# Add some CSS to make the camera input more responsive
+st.markdown(
+    """
+    <style>
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .stCameraInput div {
+        width: 100% !important;
+        max-width: 500px;
+        margin: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 img_file_buffer = st.camera_input("Capture an image")
 
@@ -17,15 +38,20 @@ if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
     image.save('image.png')
     picture = {
-    'mime_type': 'image/png',
-    'data': pathlib.Path('image.png').read_bytes()
+        'mime_type': 'image/png',
+        'data': pathlib.Path('image.png').read_bytes()
     }
 
-    response=model.generate_content(["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc, only reply with rating and the reason in detailed format", picture],generation_config=genai.types.GenerationConfig(
-            # Only one candidate for now.
+    response = model.generate_content(
+        ["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc, only reply with rating and the reason in detailed format", picture],
+        generation_config=genai.types.GenerationConfig(
             candidate_count=1,
             stop_sequences=['x'],
-            temperature=0))
+            temperature=0
+        )
+    )
     response.resolve()
 
+    st.success("Image saved as image.png")
+    st.image(image, caption="Captured Image")
     st.text(response.text)
