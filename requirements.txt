@@ -1,2 +1,4 @@
-google-generativeai
+Flask
+Pillow
 python-dotenv
+google-generativeai
