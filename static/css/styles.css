@@ -47,8 +47,8 @@ body {
 .camera-container {
     position: relative;
     width: 100%; /* Ensure the container fills its parent */
-    max-width: 400px;
-    height: auto; /* Allow the height to adjust based on the video aspect ratio */
+    max-width: 300px;
+    max-height: 700px; /* Allow the height to adjust based on the video aspect ratio */
     background-color: #000;
     border-radius: 8px;
     overflow: hidden;
@@ -57,7 +57,7 @@ body {
 
 video {
     width: 100%; /* Ensure the video fills its container */
-    height: auto; /* Allow the height to adjust based on the video aspect ratio */
+    height: 100%; /* Allow the height to adjust based on the video aspect ratio */
     object-fit: cover;
 }
 
