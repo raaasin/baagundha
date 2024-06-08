@@ -23,7 +23,7 @@ body {
     align-items: center;
 }
 
-.title {
+/*.title {
     font-size: 50px;
     font-weight: bold;
     margin:5px 0;
@@ -31,12 +31,12 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+}*/
 
 .label {
     font-size: 20px;
     font-weight: bold;
-    margin:5px 0;
+    margin:2px 0;
     background: linear-gradient(135deg, #9370db, #3cb371);
     -webkit-background-clip: text;
     background-clip: text;
@@ -52,7 +52,7 @@ body {
     background-color: #000;
     border-radius: 8px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 7px;
 }
 
 video {
@@ -87,7 +87,7 @@ video {
     font-size: small;
     max-width: 380px;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .results > div {
