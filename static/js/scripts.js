@@ -6,16 +6,23 @@ const reasonText = document.getElementById('reason-text');
 const expiryText = document.getElementById('expiry-text');
 
 function startCamera() {
-    navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: { exact: "environment" } } // Use back camera
-    })
-    .then(stream => {
-        video.srcObject = stream;
-    })
-    .catch(err => {
-        console.error("Error accessing the camera: ", err);
-        alert("Error accessing the camera: " + err.message);
-    });
+    const constraints = {
+        video: {
+            facingMode: { ideal: 'environment' },
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+        }
+    };
+
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then(stream => {
+            video.srcObject = stream;
+            video.play();  // Ensure play is called for iOS compatibility
+        })
+        .catch(err => {
+            console.error("Error accessing the camera: ", err);
+            alert("Error accessing the camera: " + err.message);
+        });
 }
 
 function generateStars(rating) {
@@ -25,6 +32,7 @@ function generateStars(rating) {
     }
     return stars;
 }
+
 captureButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
