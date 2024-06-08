@@ -17,7 +17,7 @@ body {
 }
 
 .title {
-    font-size: 65px;
+    font-size: 50px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #ff6961, #ffcc5c);
@@ -27,7 +27,7 @@ body {
 }
 
 .label {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #9370db, #3cb371);
@@ -38,7 +38,7 @@ body {
 
 .camera-container {
     position: relative;
-    width: 100%;
+    width: 95%;
     max-width: 400px;
     padding-top: 133.33%; /* 4:3 Aspect Ratio */
     background-color: #000;
