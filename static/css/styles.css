@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(135deg, white, lightblue);
+    background: linear-gradient(135deg, white, rgb(96, 172, 93));
     color: #333;
     display: flex;
     flex-direction: column;
@@ -17,11 +17,12 @@ body {
 }
 
 .title {
-    font-size: 140px;
+    font-size: 65px;
     font-weight: bold;
     margin: 20px 0;
     background: linear-gradient(135deg, #ff6961, #ffcc5c);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -31,6 +32,7 @@ body {
     margin: 20px 0;
     background: linear-gradient(135deg, #9370db, #3cb371);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
