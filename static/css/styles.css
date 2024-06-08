@@ -84,7 +84,8 @@ video {
 
 .results {
     width: 100%;
-    max-width: 400px;
+    font-size: small;
+    max-width: 380px;
     text-align: left;
     margin-top: 20px;
 }
