@@ -8,7 +8,7 @@ const expiryText = document.getElementById('expiry-text');
 function startCamera() {
     const constraints = {
         video: {
-            facingMode: { ideal: 'environment' },
+            facingMode: 'environment', // Use back camera
             width: { ideal: 1280 },
             height: { ideal: 720 }
         }
