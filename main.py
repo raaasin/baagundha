@@ -21,11 +21,10 @@ if img_file_buffer is not None:
     'data': pathlib.Path('image.png').read_bytes()
     }
 
-    response=model.generate_content(["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc, only reply with rating and nothing else", picture],generation_config=genai.types.GenerationConfig(
+    response=model.generate_content(["Read all contents of the label, based on all contents rate it out of 5 for edible products healthy diet, for unedible safe usage etc, only reply with rating and the reason in detailed format", picture],generation_config=genai.types.GenerationConfig(
             # Only one candidate for now.
             candidate_count=1,
             stop_sequences=['x'],
-            max_output_tokens=20,
             temperature=0))
     response.resolve()
 
