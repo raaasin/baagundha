@@ -1,3 +1,7 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    startCamera();
+});
+
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
@@ -35,7 +39,13 @@ function generateStars(rating) {
 
 captureButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const aspectRatio = video.videoWidth / video.videoHeight;
+    const canvasWidth = Math.min(video.videoWidth, canvas.width);
+    const canvasHeight = canvasWidth / aspectRatio;
+    
+    canvas.height = canvasHeight;
+    context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
+    
     const imageData = canvas.toDataURL('image/png');
 
     fetch('/process_image', {
@@ -48,17 +58,12 @@ captureButton.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        //console.log(data["rating"]); // Log the response to see the exact keys
-        // Correctly handle the JSON response using bracket notation
-        ratingStars.innerHTML = data["rating"] === "N/A" ? "N/A" : generateStars(parseInt(data["rating"], 10));
-        reasonText.innerText = data["reason"]; // Ensure to match the exact key in JSON
-        expiryText.innerText = data["expiry"]; // Ensure to match the exact key in JSON
+        ratingStars.innerHTML = data.rating === "N/A" ? "N/A" : generateStars(parseInt(data.rating, 10));
+        reasonText.innerText = data.reason;
+        expiryText.innerText = data.expiry;
     })
     .catch((error) => {
         console.error('Error:', error);
+        alert('There was an error processing the image. Please try again.');
     });
-});
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    startCamera();
 });

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -84,6 +88,5 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 8px;
     margin-top: 10px;
-    box-sizing: border-box;
     resize: none;
 }
