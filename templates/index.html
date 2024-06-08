@@ -16,7 +16,11 @@
             <button id="capture" class="capture-button">Capture</button>
         </div>
         <canvas id="canvas" style="display:none;"></canvas>
-        <textarea id="response" rows="10" cols="50" placeholder="Scan results will appear here..."></textarea>
+        <div id="results">
+            <div id="rating">Rating: <span id="rating-stars"></span></div>
+            <div id="reason">Reason: <span id="reason-text"></span></div>
+            <div id="expiry">Expiry: <span id="expiry-text"></span></div>
+        </div>
     </div>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>

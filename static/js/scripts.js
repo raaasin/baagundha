@@ -1,7 +1,9 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
-const responseArea = document.getElementById('response');
+const ratingStars = document.getElementById('rating-stars');
+const reasonText = document.getElementById('reason-text');
+const expiryText = document.getElementById('expiry-text');
 
 function startCamera() {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -12,6 +14,14 @@ function startCamera() {
             console.error("Error accessing the camera: ", err);
             alert("Error accessing the camera: " + err.message);
         });
+}
+
+function generateStars(rating) {
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        stars += i < rating ? '★' : '☆';
+    }
+    return stars;
 }
 
 captureButton.addEventListener('click', () => {
@@ -28,7 +38,12 @@ captureButton.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(data => {
-        responseArea.value = data.response;
+        console.log('Success:', data);
+        //console.log(data["rating"]); // Log the response to see the exact keys
+        // Correctly handle the JSON response using bracket notation
+        ratingStars.innerHTML = data["rating"] === "N/A" ? "N/A" : generateStars(parseInt(data["rating"], 10));
+        reasonText.innerText = data["reason"]; // Ensure to match the exact key in JSON
+        expiryText.innerText = data["response"]; // Ensure to match the exact key in JSON
     })
     .catch((error) => {
         console.error('Error:', error);
