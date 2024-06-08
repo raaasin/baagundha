@@ -43,7 +43,7 @@ captureButton.addEventListener('click', () => {
         // Correctly handle the JSON response using bracket notation
         ratingStars.innerHTML = data["rating"] === "N/A" ? "N/A" : generateStars(parseInt(data["rating"], 10));
         reasonText.innerText = data["reason"]; // Ensure to match the exact key in JSON
-        expiryText.innerText = data["response"]; // Ensure to match the exact key in JSON
+        expiryText.innerText = data["expiry"]; // Ensure to match the exact key in JSON
     })
     .catch((error) => {
         console.error('Error:', error);
