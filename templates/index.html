@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webcam Capture</title>
+    <title>Baagundha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Webcam Capture</h1>
-        <div class="video-container">
+        <div class="title">Baagundha</div>
+        <div class="label">Label Samjehga India</div>
+        <div class="camera-container">
             <video id="video" autoplay></video>
+            <button id="capture" class="capture-button">Capture</button>
         </div>
-        <button id="capture" class="capture-button">Capture</button>
         <canvas id="canvas" style="display:none;"></canvas>
-        <textarea id="response" rows="10" cols="50" placeholder="Response will appear here..."></textarea>
+        <textarea id="response" rows="10" cols="50" placeholder="Scan results will appear here..."></textarea>
     </div>
+    <button class="search-button">Search</button>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
