@@ -37,16 +37,20 @@ function generateStars(rating) {
     return stars;
 }
 
+/* Updated JavaScript */
 captureButton.addEventListener('click', () => {
     const context = canvas.getContext('2d');
     const aspectRatio = video.videoWidth / video.videoHeight;
     const canvasWidth = Math.min(video.videoWidth, canvas.width);
     const canvasHeight = canvasWidth / aspectRatio;
-    
+
     canvas.height = canvasHeight;
     context.drawImage(video, 0, 0, canvasWidth, canvasHeight);
-    
+
     const imageData = canvas.toDataURL('image/png');
+
+    // Pause the video frame briefly to indicate that the picture has been taken
+    video.pause();
 
     fetch('/process_image', {
         method: 'POST',
@@ -58,12 +62,14 @@ captureButton.addEventListener('click', () => {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        ratingStars.innerHTML = data.rating === "N/A" ? "N/A" : generateStars(parseInt(data.rating, 10));
-        reasonText.innerText = data.reason;
-        expiryText.innerText = data.expiry;
+        ratingStars.innerHTML = data["rating"] === "N/A" ? "N/A" : generateStars(parseInt(data.rating, 10));
+        reasonText.innerText = data["reason"];
+        expiryText.innerText = data["expiry"];
+        video.play();
     })
     .catch((error) => {
         console.error('Error:', error);
         alert('There was an error processing the image. Please try again.');
+        video.play();
     });
 });
