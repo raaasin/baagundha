@@ -2,3 +2,4 @@ Flask
 Pillow
 python-dotenv
 google-generativeai
+googlesearch-python
