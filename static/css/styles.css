@@ -17,7 +17,7 @@ body {
 
 .container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +26,7 @@ body {
 .title {
     font-size: 50px;
     font-weight: bold;
-    margin: 20px 0;
+    margin:5px 0;
     background: linear-gradient(135deg, #ff6961, #ffcc5c);
     -webkit-background-clip: text;
     background-clip: text;
@@ -36,7 +36,7 @@ body {
 .label {
     font-size: 20px;
     font-weight: bold;
-    margin: 20px 0;
+    margin:5px 0;
     background: linear-gradient(135deg, #9370db, #3cb371);
     -webkit-background-clip: text;
     background-clip: text;
