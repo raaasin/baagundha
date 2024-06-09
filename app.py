@@ -101,9 +101,9 @@ def capture_image():
         response=eval(response)
         return render_template('results.html',response=response)
     
-    except Exception as e:
+    except Exception:
         error="It's not you, it's not me... it's google :("
-        return render_template('scan.html',error=error)
+        return render_template('index.html',error=error)
     
 
 @app.route('/alternative')
