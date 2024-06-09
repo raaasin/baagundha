@@ -86,7 +86,7 @@ def capture_image():
                 'mime_type': 'image/png',
                 'data': pathlib.Path(filename).read_bytes()
             }
-        
+        #print("model about to initiate")
         response = model.generate_content(
                 ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
                 generation_config=genai.types.GenerationConfig(
@@ -98,11 +98,14 @@ def capture_image():
         response = response.text.replace("```", "")
         response = response.replace("null", "None")
         response = response.replace("json", "")
+        #print(response)
         response=eval(response)
+        #print("evaluated")
         return render_template('results.html',response=response)
     
-    except Exception:
-        error="It's not you, it's not me... it's google :("
+    except Exception as e:
+        error=f"It's not you, it's not me... it's google :(, try again later, {e}"
+
         return render_template('index.html',error=error)
     
 
