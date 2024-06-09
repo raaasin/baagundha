@@ -2,21 +2,24 @@
 {% block content %}
 <style>
 </style>
+    <meta id="rating-data" data-rating="{{response.rating}}">
     <div id="loading">Loading...</div>
     <div id="result" style="display: none;">
         <h3>Result:</h3>
         <p>Rating: {{ response.rating }}⭐</p>
         <p>Reason: {{ response.reason }}</p>
         <p>Expiry: {{ response.expiry }}</p>
+
         <div id="actions">
             <button class="scan-button" onclick="window.location.href='/'">Retake</button>
             <button class="scan-button" onclick="window.location.href='/alternative'">Alternative</button>
         </div>
     </div>
     <script>
-        
+        var rating = $('#rating-data').data();
         // if response.expiry is 'N/A' or 5 then hide Alternative button
-        if ("{{ response.expiry }}" == "N/A" || "{{ response.expiry }}" == "5") {
+        console.log(rating);
+        if (rating == "N/A" || rating == "5") {
             document.getElementById('actions').style.display = 'none';
         }
         // Simulate loading time
