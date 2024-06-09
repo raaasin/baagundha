@@ -1,4 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+    <style>
+        .scan-button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+        }
+    </style>
     <button class="scan-button" onclick="window.location.href='/scan'">Scan</button>
 {% endblock %}

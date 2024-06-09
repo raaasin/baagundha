@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
+<style>
+    #loading {
+        position: absolute;
+        top: 50%;
+        left: 40%;
+
+
+    }
+    #result {
+        top: 40%;
+        left: 3%;
+        position: absolute;
+    }
+</style>
     <div id="loading">Retrieving product info...</div>
     <div id="result" style="display: none;">
         <h3>Alternative:</h3>
