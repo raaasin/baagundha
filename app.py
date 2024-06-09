@@ -24,11 +24,11 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 def process_data():
     picture = {
         'mime_type': 'image/png',
-        'data': pathlib.Path('static/uploads/image.png').read_bytes()
+        'data': pathlib.Path('image.png').read_bytes()
     }
 
     response = model.generate_content(
-        ["What is the general term for this product? only reply with single word", picture],
+        ["What is the commonly spoken general term for this product? only reply with single word", picture],
         generation_config=genai.types.GenerationConfig(
             candidate_count=1,
             temperature=0,
@@ -36,6 +36,7 @@ def process_data():
     )
     response.resolve()
     product_name = response.text.strip()
+    print(product_name)
 
     input_query = "Which is the healthiest " + product_name + " in India"
     search_results = search(input_query, num_results=5, advanced=True)
@@ -44,6 +45,7 @@ def process_data():
     for result in search_results:
         results += str(result)
 
+    print(results)
     prompt = f"healthiest product internet search is :{results} for {product_name} in India, find only one healthy product and reply like this Alternative:, Reason:, reply in json format"
     response = model.generate_content(
         [prompt],
@@ -54,6 +56,7 @@ def process_data():
     )
     response.resolve()
     response = response.text.replace("```", "")
+    response = response.replace("null", "None")
     response = response.replace("json", "")
     response_data = eval(response)
     
@@ -91,6 +94,7 @@ def capture_image():
         )
     response.resolve()
     response = response.text.replace("```", "")
+    response = response.replace("null", "None")
     response = response.replace("json", "")
     response=eval(response)
     return render_template('results.html',response=response)

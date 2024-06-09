@@ -4,10 +4,10 @@
         <video id="camera" autoplay playsinline></video>
         <button id="capture-button" onclick="capture()">Capture</button>
         <div id="capture-options" style="display: none;">
-            <button onclick="retry()">Retry</button>
+            <button onclick="retry()">Retry ❌</button>
             <form action="/capture" method="POST" id="capture-form">
                 <input type="hidden" name="image_data" id="image-data">
-                <button type="submit">Confirm</button>
+                <button type="submit">Confirm ✅</button>
             </form>
         </div>
     </div>
