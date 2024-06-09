@@ -18,15 +18,16 @@
 
         <div id="actions">
             <button class="scan-button" onclick="window.location.href='/'">Retake</button>
-            <button class="scan-button" onclick="window.location.href='/alternative'">Alternative</button>
+            <button id="alternative" class="scan-button" onclick="window.location.href='/alternative'">Alternative</button>
         </div>
     </div>
     <script>
         var rating = $('#rating-data').data();
         // if response.expiry is 'N/A' or 5 then hide Alternative button
-        console.log(rating);
-        if (rating == "N/A" || rating == "5") {
-            document.getElementById('actions').style.display = 'none';
+        let x = rating['rating'];
+        if (x == 'N/A' || x == '5') {
+            //console.log('i tried');
+            document.getElementById('alternative').style.display = 'none';
         }
         // Simulate loading time
         setTimeout(() => {
