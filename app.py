@@ -8,6 +8,7 @@ import io
 from googlesearch import search
 import google.generativeai as genai
 from dotenv import load_dotenv 
+from prompt import prompt
 load_dotenv()
 
 app = Flask(__name__)
@@ -88,7 +89,7 @@ def capture_image():
             }
         
         response = model.generate_content(
-                ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
+                [f"{prompt} #######  Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
                 generation_config=genai.types.GenerationConfig(
                     candidate_count=1,
                     temperature=0
