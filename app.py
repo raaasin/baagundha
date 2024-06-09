@@ -8,7 +8,6 @@ import io
 from googlesearch import search
 import google.generativeai as genai
 from dotenv import load_dotenv 
-from prompt import prompt
 load_dotenv()
 
 app = Flask(__name__)
@@ -79,6 +78,28 @@ def capture_image():
         header, encoded = image_data.split(',', 1)
         image_data = base64.b64decode(encoded)
         filename = secure_filename(f"image.png")
+        safe = [
+            {
+                "category": "HARM_CATEGORY_DANGEROUS",
+                "threshold": "BLOCK_NONE",
+            },
+            {
+                "category": "HARM_CATEGORY_HARASSMENT",
+                "threshold": "BLOCK_NONE",
+            },
+            {
+                "category": "HARM_CATEGORY_HATE_SPEECH",
+                "threshold": "BLOCK_NONE",
+            },
+            {
+                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                "threshold": "BLOCK_NONE",
+            },
+            {
+                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                "threshold": "BLOCK_NONE",
+            },
+        ]
         with open(filename, 'wb') as f:
             f.write(image_data)
 
@@ -92,7 +113,7 @@ def capture_image():
                 ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
                 generation_config=genai.types.GenerationConfig(
                     candidate_count=1,
-                    temperature=0
+                    temperature=0,safety_settings=safe
                 )
             )
         response.resolve()
