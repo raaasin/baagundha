@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="loading">Retrieving product info...</div>
+    <div id="result" style="display: none;">
+        <h3>Alternative:</h3>
+        <p id="alternative"></p>
+        <h3>Reason:</h3>
+        <p id="reason"></p>
+        <div id="actions">
+            <button onclick="window.location.href='/'">Retake</button>
+            <button onclick="window.location.href='/alternative'">Alternative</button>
+        </div>
+    </div>
+    <script>
+        // When the page is loaded
+        window.onload = function() {
+            // Show loading messages sequentially
+            var loadingMessages = [
+                "Retrieving product info...",
+                "Searching the web...",
+                "Finding the best alternative...",
+                "Almost there...",
+                "Here we go..."
+            ];
+
+            var loadingIndex = 0;
+            var loadingInterval = setInterval(function() {
+                document.getElementById('loading').innerText = loadingMessages[loadingIndex];
+                loadingIndex++;
+                if (loadingIndex >= loadingMessages.length) {
+                    clearInterval(loadingInterval); // Stop the loading interval
+                }
+            }, 1000);
+
+            // Make an AJAX request to fetch data from the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/process', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // If request is successful, update the page content with response data
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById('alternative').innerHTML = response['Alternative'];
+                        document.getElementById('reason').innerHTML = response['Reason'];
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('result').style.display = 'block';
+                    } else {
+                        // Handle errors
+                        console.error('Request failed with status:', xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,55 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1, h2 {
+    margin: 0.5em 0;
+}
+
+.scan-button, #capture-button, #capture-options button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    margin: 20px 0;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1em;
+}
+
+#camera-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+video {
+    width: 90%;
+    border-radius: 25px;
+    margin: 20px 0;
+}
+
+#loading {
+    font-size: 1.5em;
+}
+
+#result img {
+    width: 80%;
+    border-radius: 25px;
+    margin: 20px 0;
+}
+
+#actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div id="loading">Loading...</div>
+    <div id="result" style="display: none;">
+        <h3>Result:</h3>
+        <p>Rating: {{ response.rating }}</p>
+        <p>Reason: {{ response.reason }}</p>
+        <p>Expiry: {{ response.expiry }}</p>
+        <div id="actions">
+            <button onclick="window.location.href='/'">Retake</button>
+            <button onclick="window.location.href='/alternative'">Alternative</button>
+        </div>
+    </div>
+    <script>
+        // Simulate loading time
+        setTimeout(() => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        }, 599);
+    </script>
+{% endblock %}

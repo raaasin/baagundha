@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baagundha</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-    <div class="container">
-        <!--<div class="title">Baagundha?</div>-->
-        <div class="label">#label_samjhega_India</div>
-        <div class="camera-container">
-            <video id="video" autoplay></video>
-            <button id="capture" class="capture-button">Capture</button>
-        </div>
-        <canvas id="canvas" style="display:none;"></canvas>
-        <div id="results">
-            <div id="rating">Rating: <span id="rating-stars"></span></div>
-            <div id="reason">Reason: <span id="reason-text"></span></div>
-            <div id="expiry">Expiry: <span id="expiry-text"></span></div>
-        </div>
-    </div>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+    <button class="scan-button" onclick="window.location.href='/scan'">Scan</button>
+{% endblock %}
