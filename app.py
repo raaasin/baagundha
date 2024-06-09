@@ -8,6 +8,7 @@ import io
 from googlesearch import search
 import google.generativeai as genai
 from dotenv import load_dotenv 
+from prompt import prompt
 load_dotenv()
 
 app = Flask(__name__)
