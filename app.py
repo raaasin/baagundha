@@ -64,7 +64,8 @@ def process_data():
 
 @app.route('/')
 def main_page():
-    return render_template('index.html')
+    error=""
+    return render_template('index.html',error=error)
 
 @app.route('/scan')
 def scan_page():
@@ -72,32 +73,38 @@ def scan_page():
 
 @app.route('/capture', methods=['POST'])
 def capture_image():
-    image_data = request.form['image_data']
-    header, encoded = image_data.split(',', 1)
-    image_data = base64.b64decode(encoded)
-    filename = secure_filename(f"image.png")
-    with open(filename, 'wb') as f:
-        f.write(image_data)
+    try:
+        image_data = request.form['image_data']
+        header, encoded = image_data.split(',', 1)
+        image_data = base64.b64decode(encoded)
+        filename = secure_filename(f"image.png")
+        with open(filename, 'wb') as f:
+            f.write(image_data)
 
 
-    picture = {
-            'mime_type': 'image/png',
-            'data': pathlib.Path(filename).read_bytes()
-        }
-    
-    response = model.generate_content(
-            ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
-            generation_config=genai.types.GenerationConfig(
-                candidate_count=1,
-                temperature=0
+        picture = {
+                'mime_type': 'image/png',
+                'data': pathlib.Path(filename).read_bytes()
+            }
+        
+        response = model.generate_content(
+                ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
+                generation_config=genai.types.GenerationConfig(
+                    candidate_count=1,
+                    temperature=0
+                )
             )
-        )
-    response.resolve()
-    response = response.text.replace("```", "")
-    response = response.replace("null", "None")
-    response = response.replace("json", "")
-    response=eval(response)
-    return render_template('results.html',response=response)
+        response.resolve()
+        response = response.text.replace("```", "")
+        response = response.replace("null", "None")
+        response = response.replace("json", "")
+        response=eval(response)
+        return render_template('results.html',response=response)
+    
+    except Exception as e:
+        error="It's not you, it's not me... it's google :("
+        return render_template('scan.html',error=error)
+    
 
 @app.route('/alternative')
 def alternative_page():
