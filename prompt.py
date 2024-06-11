@@ -1,33 +1,41 @@
-prompt="""
-To ensure the Health Star Rating (HSR) system spans a normalized 5-star maximum score, we'll need to adjust the base points to fit a new scale. We’ll assume a theoretical maximum raw score, then adjust the baseline and modifying points accordingly to fit into a normalized 5-star system.
+#due to some recent errors removed this prompt and sticked with basic version 1 prompt
 
-Adjusted Guidelines
+prompt="""
+fit into a normalized 5-star system.
+
+Guidelines
+
 Energy:
 
 0 points for ≤ 335 kJ/100g (solid foods) or ≤ 33 kJ/100mL (liquid foods)
 1 point for each 67 kJ/100g increase (solid foods) or each 6.7 kJ/100mL increase (liquid foods)
 Up to a maximum of 10 points
+
 Saturated Fat:
 
 0 points for ≤ 1g/100g or ≤ 0.1g/100mL
 1 point for each 1.4g/100g increase (solid foods) or each 0.14g/100mL increase (liquid foods)
 Up to a maximum of 10 points
+
 Total Sugars:
 
 0 points for ≤ 1g/100g or ≤ 0.5g/100mL
 1 point for each 4.5g/100g increase (solid foods) or each 2.25g/100mL increase (liquid foods)
 Up to a maximum of 10 points
+
 Sodium:
 
 0 points for ≤ 90mg/100g or ≤ 30mg/100mL
 1 point for each 270mg/100g increase (solid foods) or each 90mg/100mL increase (liquid foods)
 Up to a maximum of 10 points
+
 Positive Nutrients (Modifying Points):
 Protein:
 
 0 points for ≤ 1g/100g or ≤ 0.1g/100mL
 1 point for each 1.4g/100g increase (solid foods) or each 0.14g/100mL increase (liquid foods)
 Up to a maximum of 5 points
+
 Dietary Fibre:
 
 0 points for ≤ 0.9g/100g or ≤ 0.9g/100mL
@@ -38,6 +46,7 @@ Fruit, Vegetables, Nuts, and Legumes (FVNL):
 0 points for ≤ 40% FVNL
 1 point for each 10% FVNL increase
 Up to a maximum of 8 points
+
 Scoring:
 Baseline Points (Negative Nutrients): Sum of energy, saturated fat, total sugars, and sodium points.
 Modifying Points (Positive Nutrients): Sum of protein, dietary fibre, and FVNL points.

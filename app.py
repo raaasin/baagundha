@@ -1,10 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file,jsonify
+from flask import Flask, render_template, request,jsonify
 import os
 import base64
 from werkzeug.utils import secure_filename
 import pathlib
-from PIL import Image
-import io
 from googlesearch import search
 import google.generativeai as genai
 from dotenv import load_dotenv 
