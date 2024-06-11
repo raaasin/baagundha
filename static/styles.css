@@ -56,10 +56,10 @@ video {
 
 .label{
     font-size: 29px;
-    font-weight: 600; /* Setting font weight to 600 */
+    font-weight: 600; 
     margin: 20px 0;
-    background: linear-gradient(135deg, #20228d, #6ad449); /* Gradient text color */
+    background: linear-gradient(135deg, #20228d, #6ad449); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text; /* Define standard property for compatibility */
+    background-clip: text; 
 }

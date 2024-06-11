@@ -33,20 +33,19 @@
                 }
             }, 1000);
 
-            // Make an AJAX request to fetch data from the server
+            // Make an AJAX request
             var xhr = new XMLHttpRequest();
             xhr.open('GET', '/process', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        // If request is successful, update the page content with response data
+                        // If request is successful, update the page 
                         var response = JSON.parse(xhr.responseText);
                         document.getElementById('alternative').innerHTML = response['Alternative'];
                         document.getElementById('reason').innerHTML = response['Reason'];
                         document.getElementById('loading').style.display = 'none';
                         document.getElementById('result').style.display = 'block';
                     } else {
-                        // Handle errors
                         console.error('Request failed with status:', xhr.status);
                     }
                 }
