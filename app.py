@@ -25,11 +25,9 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 def process_data():
     global image_bytes
 
-    
-    # Prepare the image for the API request
     picture = {
         'mime_type': 'image/png',
-        'data': image_bytes.getvalue()  # Get the bytes from the BytesIO object
+        'data': image_bytes.getvalue()  
     }
     response = model.generate_content(
         ["What is the commonly spoken general term for this product? only reply with single word", picture],
@@ -83,7 +81,7 @@ def capture_image():
         header, encoded = image_data.split(',', 1)
         image_data = base64.b64decode(encoded)
 
-        # Create an in-memory bytes object
+
         image_bytes = io.BytesIO(image_data)
 
         safe = [
@@ -112,9 +110,9 @@ def capture_image():
 
         picture = {
         'mime_type': 'image/png',
-        'data': image_bytes.getvalue()  # Get the bytes from the BytesIO object
+        'data': image_bytes.getvalue()  
         }
-        #print("model about to initiate")
+
         response = model.generate_content(
                 ["Read all contents of the label, based on all contents strictly rate it out of 5 for edible products using the Australian Health Star Rating (HSR) system and mention what ingredient is bad, for inedible products like groceries or makeup rate for safety of product usage etc,reply like this: rating:, reason:, expiry:, reply in json format", picture],
                 generation_config=genai.types.GenerationConfig(
@@ -126,9 +124,8 @@ def capture_image():
         response = response.text.replace("```", "")
         response = response.replace("null", "None")
         response = response.replace("json", "")
-        #print(response)
         response=eval(response)
-        #print("evaluated")
+
         return render_template('results.html',response=response)
     
     except Exception as e:
