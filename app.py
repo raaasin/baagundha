@@ -8,6 +8,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv 
 load_dotenv()
 
+
 image_bytes=None
 
 app = Flask(__name__)
