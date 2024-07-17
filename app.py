@@ -38,8 +38,6 @@ def process_data():
             temperature=0,
         )
     )
-    
-    
     response.resolve()
     product_name = response.text.strip()
     print(product_name)
