@@ -25,7 +25,6 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 @app.route('/process', methods=['GET'])
 def process_data():
     global image_bytes
-
     picture = {
         'mime_type': 'image/png',
         'data': image_bytes.getvalue()  
