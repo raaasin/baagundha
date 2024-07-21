@@ -29,8 +29,7 @@ def process_data():
         'mime_type': 'image/png',
         'data': image_bytes.getvalue()  
     }
-    
-    #update app
+
     response = model.generate_content(
         ["What is the commonly spoken general term for this product? only reply with single word", picture],
         generation_config=genai.types.GenerationConfig(
