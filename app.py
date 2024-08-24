@@ -38,7 +38,6 @@ def process_data():
         )
     )
     
-    
     response.resolve()
     product_name = response.text.strip()
     print(product_name)
