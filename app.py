@@ -135,7 +135,6 @@ def capture_image():
 
         return render_template('index.html',error=error)
     
-
 @app.route('/alternative')
 def alternative_page():
     return render_template('alternative.html', process_function=process_data)
